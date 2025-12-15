@@ -554,24 +554,6 @@ CONFIG_PARTITION_TABLE_MD5=y
 # end of Partition Table
 
 #
-# HMI Board Config
-#
-# CONFIG_BSP_BOARD_ESP32_S3_BOX is not set
-# CONFIG_BSP_BOARD_ESP32_S3_BOX_Lite is not set
-CONFIG_BSP_BOARD_ESP32_S3_BOX_3=y
-# end of HMI Board Config
-
-#
-# Power Save Configuration
-#
-CONFIG_EXAMPLE_WIFI_LISTEN_INTERVAL=3
-CONFIG_EXAMPLE_WIFI_BEACON_TIMEOUT=6
-# CONFIG_EXAMPLE_POWER_SAVE_NONE is not set
-CONFIG_EXAMPLE_POWER_SAVE_MIN_MODEM=y
-# CONFIG_EXAMPLE_POWER_SAVE_MAX_MODEM is not set
-# end of Power Save Configuration
-
-#
 # Compiler options
 #
 CONFIG_COMPILER_OPTIMIZATION_DEBUG=y
@@ -2186,65 +2168,21 @@ CONFIG_BSP_I2S_NUM=1
 # end of Board Support Package(ESP-BOX)
 
 #
-# Board Support Package(ESP-BOX-3)
-#
-
-#
-# I2C
-#
-# end of I2C
-
-#
-# SPIFFS - Virtual File System
-#
-# end of SPIFFS - Virtual File System
-
-#
-# SD card - Virtual File System
-#
-# CONFIG_BSP_SD_FORMAT_ON_MOUNT_FAIL is not set
-CONFIG_BSP_SD_MOUNT_POINT="/sdcard"
-# end of SD card - Virtual File System
-
-#
-# Display
-#
-# end of Display
-# end of Board Support Package(ESP-BOX-3)
-
-#
-# Board Support Package(ESP-BOX-Lite)
-#
-
-#
-# I2C
-#
-# end of I2C
-
-#
-# SPIFFS - Virtual File System
-#
-# end of SPIFFS - Virtual File System
-
-#
-# Display
-#
-# end of Display
-# end of Board Support Package(ESP-BOX-Lite)
-
-#
 # Audio Codec Device Configuration
 #
+CONFIG_CODEC_I2C_BACKWARD_COMPATIBLE=y
 CONFIG_CODEC_ES8311_SUPPORT=y
 CONFIG_CODEC_ES7210_SUPPORT=y
 CONFIG_CODEC_ES7243_SUPPORT=y
 CONFIG_CODEC_ES7243E_SUPPORT=y
 CONFIG_CODEC_ES8156_SUPPORT=y
 CONFIG_CODEC_AW88298_SUPPORT=y
+CONFIG_CODEC_ES8389_SUPPORT=y
 CONFIG_CODEC_ES8374_SUPPORT=y
 CONFIG_CODEC_ES8388_SUPPORT=y
 CONFIG_CODEC_TAS5805M_SUPPORT=y
 # CONFIG_CODEC_ZL38063_SUPPORT is not set
+# CONFIG_CODEC_CJC8910_SUPPORT is not set
 # end of Audio Codec Device Configuration
 
 #
@@ -2434,7 +2372,7 @@ CONFIG_LV_USE_FONT_PLACEHOLDER=y
 #
 CONFIG_LV_TXT_ENC_UTF8=y
 # CONFIG_LV_TXT_ENC_ASCII is not set
-CONFIG_LV_TXT_BREAK_CHARS=" ,.;:-_"
+CONFIG_LV_TXT_BREAK_CHARS=" ,.;:-_)}"
 CONFIG_LV_TXT_LINE_BREAK_LONG_LEN=0
 CONFIG_LV_TXT_COLOR_CMD="#"
 # CONFIG_LV_USE_BIDI is not set
@@ -2534,7 +2472,7 @@ CONFIG_LV_USE_GIF=y
 #
 # Others
 #
-CONFIG_LV_USE_SNAPSHOT=y
+# CONFIG_LV_USE_SNAPSHOT is not set
 # CONFIG_LV_USE_MONKEY is not set
 # CONFIG_LV_USE_GRIDNAV is not set
 # CONFIG_LV_USE_FRAGMENT is not set

@@ -318,7 +318,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_main_
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /opt/homebrew/bin/cmake --regenerate-during-build -S/Users/liguang/Documents/xRunda/project/AI/github/esp-idf/components/bootloader/subproject -B/Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/build/bootloader
+  command = /opt/homebrew/bin/cmake --regenerate-during-build -S/Users/liguang/Documents/xRunda/project/AI/github/esp-idf/components/bootloader/subproject -B/Users/liguang/Documents/xRunda/project/AI/github/stepAI/build/bootloader
   description = Re-running CMake...
   generator = 1
 

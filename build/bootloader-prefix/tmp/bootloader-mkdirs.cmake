@@ -10,18 +10,18 @@ if(NOT EXISTS "/Users/liguang/Documents/xRunda/project/AI/github/esp-idf/compone
   file(MAKE_DIRECTORY "/Users/liguang/Documents/xRunda/project/AI/github/esp-idf/components/bootloader/subproject")
 endif()
 file(MAKE_DIRECTORY
-  "/Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/build/bootloader"
-  "/Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/build/bootloader-prefix"
-  "/Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/build/bootloader-prefix/tmp"
-  "/Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/build/bootloader-prefix/src/bootloader-stamp"
-  "/Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/build/bootloader-prefix/src"
-  "/Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/build/bootloader-prefix/src/bootloader-stamp"
+  "/Users/liguang/Documents/xRunda/project/AI/github/stepAI/build/bootloader"
+  "/Users/liguang/Documents/xRunda/project/AI/github/stepAI/build/bootloader-prefix"
+  "/Users/liguang/Documents/xRunda/project/AI/github/stepAI/build/bootloader-prefix/tmp"
+  "/Users/liguang/Documents/xRunda/project/AI/github/stepAI/build/bootloader-prefix/src/bootloader-stamp"
+  "/Users/liguang/Documents/xRunda/project/AI/github/stepAI/build/bootloader-prefix/src"
+  "/Users/liguang/Documents/xRunda/project/AI/github/stepAI/build/bootloader-prefix/src/bootloader-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "/Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
+    file(MAKE_DIRECTORY "/Users/liguang/Documents/xRunda/project/AI/github/stepAI/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "/Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "/Users/liguang/Documents/xRunda/project/AI/github/stepAI/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
 endif()

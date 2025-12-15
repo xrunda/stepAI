@@ -211,9 +211,14 @@ esp_codec_dev_handle_t bsp_audio_codec_microphone_init(void)
 #define LCD_PARAM_BITS         8
 #define LCD_LEDC_CH            CONFIG_BSP_DISPLAY_BRIGHTNESS_LEDC_CH
 
+static bool use_direct_gpio_backlight = false;
+
 static esp_err_t bsp_display_brightness_init(void)
 {
-    // Setup LEDC peripheral for PWM backlight control
+    // GPIO 45 on ESP32-S3-BOX may have conflict with other peripherals
+    // Based on warning "GPIO 45 is not usable, maybe conflict with others",
+    // we'll use direct GPIO control as primary method for reliability
+    // Try LEDC first, but immediately test if it actually works
     const ledc_channel_config_t LCD_backlight_channel = {
         .gpio_num = BSP_LCD_BACKLIGHT,
         .speed_mode = LEDC_LOW_SPEED_MODE,
@@ -231,9 +236,63 @@ static esp_err_t bsp_display_brightness_init(void)
         .clk_cfg = LEDC_AUTO_CLK
     };
 
-    BSP_ERROR_CHECK_RETURN_ERR(ledc_timer_config(&LCD_backlight_timer));
-    BSP_ERROR_CHECK_RETURN_ERR(ledc_channel_config(&LCD_backlight_channel));
+    esp_err_t ret = ledc_timer_config(&LCD_backlight_timer);
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "LEDC timer config failed: %s", esp_err_to_name(ret));
+        ESP_LOGW(TAG, "Falling back to direct GPIO control for backlight");
+        use_direct_gpio_backlight = true;
+        gpio_reset_pin(BSP_LCD_BACKLIGHT);
+        gpio_set_direction(BSP_LCD_BACKLIGHT, GPIO_MODE_OUTPUT);
+        gpio_set_level(BSP_LCD_BACKLIGHT, 0); // Start with backlight off
+        ESP_LOGI(TAG, "Backlight initialized via direct GPIO control on GPIO %d", BSP_LCD_BACKLIGHT);
+        return ESP_OK;
+    }
+    
+    ret = ledc_channel_config(&LCD_backlight_channel);
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "LEDC channel config failed for GPIO %d: %s", BSP_LCD_BACKLIGHT, esp_err_to_name(ret));
+        ESP_LOGW(TAG, "Falling back to direct GPIO control for backlight");
+        use_direct_gpio_backlight = true;
+        gpio_reset_pin(BSP_LCD_BACKLIGHT);
+        gpio_set_direction(BSP_LCD_BACKLIGHT, GPIO_MODE_OUTPUT);
+        gpio_set_level(BSP_LCD_BACKLIGHT, 0); // Start with backlight off
+        ESP_LOGI(TAG, "Backlight initialized via direct GPIO control on GPIO %d", BSP_LCD_BACKLIGHT);
+        return ESP_OK;
+    }
 
+    // Even if LEDC config succeeds, GPIO 45 might have conflict (warning may appear)
+    // Test if we can actually set and update the duty cycle - if this fails, GPIO is not usable with LEDC
+    ret = ledc_set_duty(LEDC_LOW_SPEED_MODE, LCD_LEDC_CH, 1023);
+    if (ret != ESP_OK) {
+        ESP_LOGW(TAG, "LEDC set_duty test failed, GPIO 45 may have conflict, using direct GPIO control");
+        use_direct_gpio_backlight = true;
+        gpio_reset_pin(BSP_LCD_BACKLIGHT);
+        gpio_set_direction(BSP_LCD_BACKLIGHT, GPIO_MODE_OUTPUT);
+        gpio_set_level(BSP_LCD_BACKLIGHT, 0);
+        ESP_LOGI(TAG, "Backlight initialized via direct GPIO control on GPIO %d", BSP_LCD_BACKLIGHT);
+        return ESP_OK;
+    }
+    
+    ret = ledc_update_duty(LEDC_LOW_SPEED_MODE, LCD_LEDC_CH);
+    if (ret != ESP_OK) {
+        ESP_LOGW(TAG, "LEDC update_duty test failed, GPIO 45 may have conflict, using direct GPIO control");
+        use_direct_gpio_backlight = true;
+        gpio_reset_pin(BSP_LCD_BACKLIGHT);
+        gpio_set_direction(BSP_LCD_BACKLIGHT, GPIO_MODE_OUTPUT);
+        gpio_set_level(BSP_LCD_BACKLIGHT, 0);
+        ESP_LOGI(TAG, "Backlight initialized via direct GPIO control on GPIO %d", BSP_LCD_BACKLIGHT);
+        return ESP_OK;
+    }
+    
+    // Reset duty to 0 for now
+    ledc_set_duty(LEDC_LOW_SPEED_MODE, LCD_LEDC_CH, 0);
+    ledc_update_duty(LEDC_LOW_SPEED_MODE, LCD_LEDC_CH);
+
+    // If we get here, LEDC seems to work, but GPIO 45 conflict warning may still appear
+    // For maximum reliability, we'll use direct GPIO control when brightness is set
+    // This ensures backlight works even if LEDC has issues
+    use_direct_gpio_backlight = false;
+    ESP_LOGI(TAG, "LEDC backlight initialized on GPIO %d (will use direct GPIO if LEDC fails)", BSP_LCD_BACKLIGHT);
     return ESP_OK;
 }
 
@@ -247,9 +306,37 @@ esp_err_t bsp_display_brightness_set(int brightness_percent)
     }
 
     ESP_LOGI(TAG, "Setting LCD backlight: %d%%", brightness_percent);
+    
+    if (use_direct_gpio_backlight) {
+        // Use direct GPIO control when LEDC is not available
+        gpio_set_level(BSP_LCD_BACKLIGHT, brightness_percent > 0 ? 1 : 0);
+        ESP_LOGI(TAG, "Backlight set to %s via direct GPIO control", brightness_percent > 0 ? "ON" : "OFF");
+        return ESP_OK;
+    }
+    
+    // Use LEDC PWM control
     uint32_t duty_cycle = (1023 * brightness_percent) / 100; // LEDC resolution set to 10bits, thus: 100% = 1023
-    BSP_ERROR_CHECK_RETURN_ERR(ledc_set_duty(LEDC_LOW_SPEED_MODE, LCD_LEDC_CH, duty_cycle));
-    BSP_ERROR_CHECK_RETURN_ERR(ledc_update_duty(LEDC_LOW_SPEED_MODE, LCD_LEDC_CH));
+    esp_err_t ret = ledc_set_duty(LEDC_LOW_SPEED_MODE, LCD_LEDC_CH, duty_cycle);
+    if (ret != ESP_OK) {
+        ESP_LOGW(TAG, "LEDC set_duty failed, switching to direct GPIO control");
+        use_direct_gpio_backlight = true;
+        gpio_reset_pin(BSP_LCD_BACKLIGHT);
+        gpio_set_direction(BSP_LCD_BACKLIGHT, GPIO_MODE_OUTPUT);
+        gpio_set_level(BSP_LCD_BACKLIGHT, brightness_percent > 0 ? 1 : 0);
+        ESP_LOGI(TAG, "Backlight set to %s via direct GPIO control (fallback)", brightness_percent > 0 ? "ON" : "OFF");
+        return ESP_OK;
+    }
+    
+    ret = ledc_update_duty(LEDC_LOW_SPEED_MODE, LCD_LEDC_CH);
+    if (ret != ESP_OK) {
+        ESP_LOGW(TAG, "LEDC update_duty failed, switching to direct GPIO control");
+        use_direct_gpio_backlight = true;
+        gpio_reset_pin(BSP_LCD_BACKLIGHT);
+        gpio_set_direction(BSP_LCD_BACKLIGHT, GPIO_MODE_OUTPUT);
+        gpio_set_level(BSP_LCD_BACKLIGHT, brightness_percent > 0 ? 1 : 0);
+        ESP_LOGI(TAG, "Backlight set to %s via direct GPIO control (fallback)", brightness_percent > 0 ? "ON" : "OFF");
+        return ESP_OK;
+    }
 
     return ESP_OK;
 }
@@ -384,8 +471,11 @@ esp_err_t bsp_touch_new(const bsp_touch_config_t *config, esp_lcd_touch_handle_t
 
 static lv_indev_t *bsp_display_indev_init(lv_disp_t *disp)
 {
-    BSP_ERROR_CHECK_RETURN_NULL(bsp_touch_new(NULL, &tp));
-    assert(tp);
+    esp_err_t ret = bsp_touch_new(NULL, &tp);
+    if (ret != ESP_OK || tp == NULL) {
+        ESP_LOGW(TAG, "Touch screen initialization failed (0x%x), continuing without touch support", ret);
+        return NULL;
+    }
 
     /* Add touch input (for selected screen) */
     const lvgl_port_touch_cfg_t touch_cfg = {
@@ -423,7 +513,11 @@ lv_disp_t *bsp_display_start_with_config(const bsp_display_cfg_t *cfg)
 
     BSP_NULL_CHECK(disp = bsp_display_lcd_init(cfg), NULL);
 
-    BSP_NULL_CHECK(disp_indev = bsp_display_indev_init(disp), NULL);
+    // Touch screen initialization is optional - continue even if it fails
+    disp_indev = bsp_display_indev_init(disp);
+    if (disp_indev == NULL) {
+        ESP_LOGW(TAG, "Touch input device initialization failed, continuing without touch support");
+    }
 
     return disp;
 }

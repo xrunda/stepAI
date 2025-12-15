@@ -13,8 +13,8 @@ end
 
 # Load bootloader symbols
 set confirm off
-    add-symbol-file /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/build/bootloader/bootloader.elf
+    add-symbol-file /Users/liguang/Documents/xRunda/project/AI/github/stepAI/build/bootloader/bootloader.elf
 set confirm on
 
 # Load application symbols
-file /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/build/stepAI.elf
+file /Users/liguang/Documents/xRunda/project/AI/github/stepAI/build/stepAI.elf

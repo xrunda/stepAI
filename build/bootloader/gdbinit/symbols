@@ -17,4 +17,4 @@ set confirm off
 set confirm on
 
 # Load application symbols
-file /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/build/bootloader/bootloader.elf
+file /Users/liguang/Documents/xRunda/project/AI/github/stepAI/build/bootloader/bootloader.elf

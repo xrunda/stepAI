@@ -39,13 +39,13 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/build/bootloader/esp-idf/cmake_install.cmake")
+  include("/Users/liguang/Documents/xRunda/project/AI/github/stepAI/build/bootloader/esp-idf/cmake_install.cmake")
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/build/bootloader/install_local_manifest.txt"
+  file(WRITE "/Users/liguang/Documents/xRunda/project/AI/github/stepAI/build/bootloader/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
 if(CMAKE_INSTALL_COMPONENT)
@@ -61,6 +61,6 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/build/bootloader/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "/Users/liguang/Documents/xRunda/project/AI/github/stepAI/build/bootloader/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

@@ -1,2 +1,2 @@
-source /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/build/bootloader/gdbinit/symbols
-source /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/build/bootloader/gdbinit/connect
+source /Users/liguang/Documents/xRunda/project/AI/github/stepAI/build/bootloader/gdbinit/symbols
+source /Users/liguang/Documents/xRunda/project/AI/github/stepAI/build/bootloader/gdbinit/connect
