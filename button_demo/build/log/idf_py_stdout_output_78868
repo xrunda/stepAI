@@ -1,0 +1,20 @@
+[0/1] Re-running CMake...
+-- Building ESP-IDF components for target esp32s3
+NOTICE: Processing 14 dependencies:
+NOTICE: [1/14] espressif/button (3.5.0)
+NOTICE: [2/14] espressif/cmake_utilities (0.5.3)
+NOTICE: [3/14] espressif/esp-box (3.0.5)
+NOTICE: [4/14] espressif/esp-box-3 (1.1.3)
+NOTICE: [5/14] espressif/esp-box-lite (2.0.4)
+NOTICE: [6/14] espressif/esp_codec_dev (1.1.0)
+NOTICE: [7/14] espressif/esp_lcd_ili9341 (1.2.0)
+NOTICE: [8/14] espressif/esp_lcd_touch (1.2.1)
+NOTICE: [9/14] espressif/esp_lcd_touch_gt911 (1.2.0~1)
+NOTICE: [10/14] espressif/esp_lcd_touch_tt21100 (1.2.0)
+NOTICE: [11/14] espressif/esp_lvgl_port (1.4.0)
+NOTICE: [12/14] espressif/icm42670 (1.0.0)
+NOTICE: [13/14] lvgl/lvgl (8.4.0)
+NOTICE: [14/14] idf (5.4.0)
+-- Configuring incomplete, errors occurred!
+FAILED: build.ninja 
+/opt/homebrew/bin/cmake --regenerate-during-build -S/Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/button_demo -B/Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/button_demo/build

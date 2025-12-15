@@ -1,0 +1,66 @@
+CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+info: INFO: Symbol BSP_ERROR_CHECK defined in multiple locations (see below). Please check if this is a correct behavior or a random name match:
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box-3/Kconfig:3
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box-lite/Kconfig:3
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box/Kconfig:3
+info: INFO: Symbol BSP_I2C_NUM defined in multiple locations (see below). Please check if this is a correct behavior or a random name match:
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box-3/Kconfig:10
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box/Kconfig:10
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box-lite/Kconfig:10
+info: INFO: Symbol BSP_I2C_FAST_MODE defined in multiple locations (see below). Please check if this is a correct behavior or a random name match:
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box/Kconfig:17
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box-lite/Kconfig:17
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box-3/Kconfig:17
+info: INFO: Symbol BSP_I2C_CLK_SPEED_HZ defined in multiple locations (see below). Please check if this is a correct behavior or a random name match:
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box-3/Kconfig:23
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box/Kconfig:23
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box-lite/Kconfig:23
+info: INFO: Symbol BSP_SPIFFS_FORMAT_ON_MOUNT_FAIL defined in multiple locations (see below). Please check if this is a correct behavior or a random name match:
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box/Kconfig:30
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box-3/Kconfig:30
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box-lite/Kconfig:30
+info: INFO: Symbol BSP_SPIFFS_MOUNT_POINT defined in multiple locations (see below). Please check if this is a correct behavior or a random name match:
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box/Kconfig:36
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box-lite/Kconfig:36
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box-3/Kconfig:36
+info: INFO: Symbol BSP_SPIFFS_PARTITION_LABEL defined in multiple locations (see below). Please check if this is a correct behavior or a random name match:
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box/Kconfig:42
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box-3/Kconfig:42
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box-lite/Kconfig:42
+info: INFO: Symbol BSP_SPIFFS_MAX_FILES defined in multiple locations (see below). Please check if this is a correct behavior or a random name match:
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box/Kconfig:48
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box-lite/Kconfig:48
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box-3/Kconfig:48
+info: INFO: Symbol BSP_DISPLAY_BRIGHTNESS_LEDC_CH defined in multiple locations (see below). Please check if this is a correct behavior or a random name match:
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box-lite/Kconfig:56
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box/Kconfig:56
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box-3/Kconfig:71
+info: INFO: Symbol BSP_LCD_DRAW_BUF_HEIGHT defined in multiple locations (see below). Please check if this is a correct behavior or a random name match:
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box/Kconfig:64
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box-3/Kconfig:79
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box-lite/Kconfig:64
+info: INFO: Symbol BSP_LCD_DRAW_BUF_DOUBLE defined in multiple locations (see below). Please check if this is a correct behavior or a random name match:
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box-lite/Kconfig:71
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box-3/Kconfig:86
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box/Kconfig:71
+info: INFO: Symbol BSP_I2S_NUM defined in multiple locations (see below). Please check if this is a correct behavior or a random name match:
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box-lite/Kconfig:78
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box/Kconfig:78
+    /Users/liguang/Documents/xRunda/project/AI/github/esp-box/examples/stepAI/managed_components/espressif__esp-box-3/Kconfig:93
+CMake Deprecation Warning at /Users/liguang/Documents/xRunda/project/AI/github/esp-idf/components/mbedtls/mbedtls/CMakeLists.txt:21 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
