@@ -2135,7 +2135,7 @@ CONFIG_CU_DIAGNOSTICS_COLOR_ALWAYS=y
 # end of CMake Utilities
 
 #
-# Board Support Package(ESP-BOX)
+# Board Support Package(ESP-BOX-3)
 #
 CONFIG_BSP_ERROR_CHECK=y
 
@@ -2157,6 +2157,13 @@ CONFIG_BSP_SPIFFS_MAX_FILES=5
 # end of SPIFFS - Virtual File System
 
 #
+# SD card - Virtual File System
+#
+# CONFIG_BSP_SD_FORMAT_ON_MOUNT_FAIL is not set
+CONFIG_BSP_SD_MOUNT_POINT="/sdcard"
+# end of SD card - Virtual File System
+
+#
 # Display
 #
 CONFIG_BSP_DISPLAY_BRIGHTNESS_LEDC_CH=1
@@ -2165,7 +2172,7 @@ CONFIG_BSP_LCD_DRAW_BUF_HEIGHT=10
 # end of Display
 
 CONFIG_BSP_I2S_NUM=1
-# end of Board Support Package(ESP-BOX)
+# end of Board Support Package(ESP-BOX-3)
 
 #
 # Audio Codec Device Configuration

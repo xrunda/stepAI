@@ -1,7 +1,7 @@
 ## IDF Component Manager Manifest File
 dependencies:
   idf: ">=5.0"
-  espressif/esp-box:
+  espressif/esp-box-3:
     version: "*"
   espressif/button:
     version: ">=2.5,<4.0"

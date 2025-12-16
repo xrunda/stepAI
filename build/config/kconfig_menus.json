@@ -31480,7 +31480,7 @@
                             }
                         ],
                         "depends_on": null,
-                        "id": "component-config-board-support-package-esp-box--i2c",
+                        "id": "component-config-board-support-package-esp-box-3--i2c",
                         "title": "I2C",
                         "type": "menu"
                     },
@@ -31528,8 +31528,36 @@
                             }
                         ],
                         "depends_on": null,
-                        "id": "component-config-board-support-package-esp-box--spiffs-virtual-file-system",
+                        "id": "component-config-board-support-package-esp-box-3--spiffs-virtual-file-system",
                         "title": "SPIFFS - Virtual File System",
+                        "type": "menu"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": "The SDMMC host will format (FAT) the SD card if it fails to mount the filesystem.",
+                                "id": "BSP_SD_FORMAT_ON_MOUNT_FAIL",
+                                "name": "BSP_SD_FORMAT_ON_MOUNT_FAIL",
+                                "range": null,
+                                "title": "Format SD card if mounting fails",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": "Mount point of the SD card in the Virtual File System",
+                                "id": "BSP_SD_MOUNT_POINT",
+                                "name": "BSP_SD_MOUNT_POINT",
+                                "range": null,
+                                "title": "SD card mount point",
+                                "type": "string"
+                            }
+                        ],
+                        "depends_on": null,
+                        "id": "component-config-board-support-package-esp-box-3--sd-card-virtual-file-system",
+                        "title": "SD card - Virtual File System",
                         "type": "menu"
                     },
                     {
@@ -31572,7 +31600,7 @@
                             }
                         ],
                         "depends_on": null,
-                        "id": "component-config-board-support-package-esp-box--display",
+                        "id": "component-config-board-support-package-esp-box-3--display",
                         "title": "Display",
                         "type": "menu"
                     },
@@ -31591,8 +31619,8 @@
                     }
                 ],
                 "depends_on": null,
-                "id": "component-config-board-support-package-esp-box-",
-                "title": "Board Support Package(ESP-BOX)",
+                "id": "component-config-board-support-package-esp-box-3-",
+                "title": "Board Support Package(ESP-BOX-3)",
                 "type": "menu"
             },
             {

@@ -1,0 +1,35 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0x2 (DOWNLOAD(USB/UART0))
+Saved PC:0x40041a76
+waiting for download
+[0;32mI (903) gpio: GPIO[3]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:2 [0m
+[1;31mE (903) lcd_panel.io.i2c: panel_io_i2c_rx_buffer(140): i2c transaction failed[0m
+[1;31mE (903) TT21100: esp_lcd_touch_tt21100_read_data(204): I2C read error![0m
+[1;31mE (903) TT21100: esp_lcd_touch_new_i2c_tt21100(112): TT21100 init failed[0m
+[1;31mE (903) TT21100: Error (0xffffffff)! Touch controller TT21100 initialization failed![0m
+[0;32mI (903) gpio: GPIO[3]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;33mW (903) ESP-BOX: Touch screen initialization failed (0xffffffff), continuing without touch support[0m
+[0;33mW (903) ESP-BOX: Touch input device initialization failed, continuing without touch support[0m
+[0;32mI (903) stepAI: Display initialized successfully[0m
+[0;32mI (1103) stepAI: Setting display brightness to 100%...[0m
+[0;32mI (1103) ESP-BOX: Setting LCD backlight: 100%[0m
+[0;32mI (1103) stepAI: Backlight turned on successfully[0m
+[0;32mI (1203) stepAI: Creating UI...[0m
+[0;32mI (1413) stepAI: StepAI Example Initialized[0m
+[0;32mI (1413) main_task: Returned from app_main()[0m
+[0;32mI (910) gpio: GPIO[3]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:2 [0m
+[1;31mE (910) lcd_panel.io.i2c: panel_io_i2c_rx_buffer(140): i2c transaction failed[0m
+[1;31mE (910) TT21100: esp_lcd_touch_tt21100_read_data(204): I2C read error![0m
+[1;31mE (910) TT21100: esp_lcd_touch_new_i2c_tt21100(112): TT21100 init failed[0m
+[1;31mE (910) TT21100: Error (0xffffffff)! Touch controller TT21100 initialization failed![0m
+[0;32mI (910) gpio: GPIO[3]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;33mW (910) ESP-BOX: Touch screen initialization failed (0xffffffff), continuing without touch support[0m
+[0;33mW (910) ESP-BOX: Touch input device initialization failed, continuing without touch support[0m
+[0;32mI (910) stepAI: Display initialized successfully[0m
+[0;32mI (1110) stepAI: Setting display brightness to 100%...[0m
+[0;32mI (1110) ESP-BOX: Setting LCD backlight: 100%[0m
+[0;32mI (1110) stepAI: Backlight turned on successfully[0m
+[0;32mI (1210) stepAI: Creating UI...[0m
+[0;32mI (1420) stepAI: StepAI Example Initialized[0m
+[0;32mI (1420) main_task: Returned from app_main()[0m

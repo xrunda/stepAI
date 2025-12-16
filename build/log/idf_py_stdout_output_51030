@@ -1,0 +1,109 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0xa (SPI_FAST_FLASH_BOOT)
+Saved PC:0x42012e45
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x170c
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xe24
+load:0x403cb700,len:0x317c
+entry 0x403c893c
+[0;32mI (19) boot: ESP-IDF v5.4-398-g473771bc14 2nd stage bootloader[0m
+[0;32mI (19) boot: compile time Dec 16 2025 09:51:04[0m
+[0;32mI (19) boot: Multicore bootloader[0m
+[0;32mI (19) boot: chip revision: v0.2[0m
+[0;32mI (19) boot: efuse block revision: v1.3[0m
+[0;32mI (20) qio_mode: Enabling QIO for flash chip GD[0m
+[0;32mI (20) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (20) boot.esp32s3: SPI Mode       : QIO[0m
+[0;32mI (20) boot.esp32s3: SPI Flash Size : 16MB[0m
+[0;32mI (20) boot: Enabling RNG early entropy source...[0m
+[0;32mI (20) boot: Partition Table:[0m
+[0;32mI (20) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (21) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (21) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (22) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (22) boot: End of partition table[0m
+[0;32mI (22) esp_image: segment 0: paddr=00010020 vaddr=3c060020 size=15754h ( 87892) map[0m
+[0;32mI (36) esp_image: segment 1: paddr=0002577c vaddr=3fc9b300 size=03060h ( 12384) load[0m
+[0;32mI (38) esp_image: segment 2: paddr=000287e4 vaddr=40378000 size=07834h ( 30772) load[0m
+[0;32mI (44) esp_image: segment 3: paddr=00030020 vaddr=42000020 size=562a8h (352936) map[0m
+[0;32mI (97) esp_image: segment 4: paddr=000862d0 vaddr=4037f834 size=0b9f0h ( 47600) load[0m
+[0;32mI (107) esp_image: segment 5: paddr=00091cc8 vaddr=600fe100 size=0001ch (    28) load[0m
+[0;32mI (114) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (114) boot: Disabling RNG early entropy source...[0m
+[0;32mI (115) octal_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (115) octal_psram: dev id       : 0x03 (generation 4)[0m
+[0;32mI (116) octal_psram: density      : 0x05 (128 Mbit)[0m
+[0;32mI (116) octal_psram: good-die     : 0x01 (Pass)[0m
+[0;32mI (116) octal_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (116) octal_psram: VCC          : 0x00 (1.8V)[0m
+[0;32mI (116) octal_psram: SRF          : 0x01 (Fast Refresh)[0m
+[0;32mI (117) octal_psram: BurstType    : 0x01 (Hybrid Wrap)[0m
+[0;32mI (117) octal_psram: BurstLen     : 0x01 (32 Byte)[0m
+[0;32mI (117) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)[0m
+[0;32mI (117) octal_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (118) MSPI Timing: PSRAM timing tuning index: 6[0m
+[0;32mI (118) esp_psram: Found 16MB PSRAM device[0m
+[0;32mI (118) esp_psram: Speed: 80MHz[0m
+[0;32mI (119) cpu_start: Multicore app[0m
+[0;32mI (715) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (724) cpu_start: Pro cpu start user code[0m
+[0;32mI (724) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (724) app_init: Application information:[0m
+[0;32mI (724) app_init: Project name:     stepAI[0m
+[0;32mI (724) app_init: App version:      19b6310-dirty[0m
+[0;32mI (725) app_init: Compile time:     Dec 16 2025 09:51:02[0m
+[0;32mI (725) app_init: ELF file SHA256:  05cc5b017...[0m
+[0;32mI (725) app_init: ESP-IDF:          v5.4-398-g473771bc14[0m
+[0;32mI (725) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (725) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (725) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (726) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (726) heap_init: At 3FC9F210 len 0004A500 (297 KiB): RAM[0m
+[0;32mI (726) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (726) heap_init: At 600FE11C len 00001ECC (7 KiB): RTCRAM[0m
+[0;32mI (727) esp_psram: Adding pool of 16384K of PSRAM memory to heap allocator[0m
+[0;32mI (727) spi_flash: detected chip: gd[0m
+[0;32mI (727) spi_flash: flash io: qio[0m
+[0;33mW (728) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (728) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (729) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (729) main_task: Started on CPU0[0m
+[0;32mI (739) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (739) main_task: Calling app_main()[0m
+[0;32mI (739) stepAI: StepAI Example Started[0m
+[0;32mI (739) stepAI: Initializing I2C...[0m
+[0;32mI (739) stepAI: I2C initialized[0m
+[0;32mI (739) stepAI: Initializing display...[0m
+[0;32mI (739) LVGL: Starting LVGL task[0m
+[0;32mI (739) ESP-BOX: LEDC backlight initialized on GPIO 47 (will use direct GPIO if LEDC fails)[0m
+[0;33mW (739) ledc: GPIO 47 is not usable, maybe conflict with others[0m
+[0;32mI (739) ESP-BOX: LEDC backlight initialized on GPIO 47 (will use direct GPIO if LEDC fails)[0m
+[0;32mI (739) gpio: GPIO[4]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (739) gpio: GPIO[48]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (859) gpio: GPIO[3]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:2 [0m
+[1;31mE (859) lcd_panel.io.i2c: panel_io_i2c_rx_buffer(140): i2c transaction failed[0m
+[1;31mE (859) TT21100: esp_lcd_touch_tt21100_read_data(204): I2C read error![0m
+[1;31mE (859) TT21100: esp_lcd_touch_new_i2c_tt21100(112): TT21100 init failed[0m
+[1;31mE (859) TT21100: Error (0xffffffff)! Touch controller TT21100 initialization failed![0m
+[0;32mI (859) gpio: GPIO[3]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;33mW (859) ESP-BOX: Touch screen initialization failed (0xffffffff), continuing without touch support[0m
+[0;33mW (859) ESP-BOX: Touch input device initialization failed, continuing without touch support[0m
+[0;32mI (859) stepAI: Display initialized successfully[0m
+[0;32mI (1059) stepAI: Setting display brightness to 100%...[0m
+[0;32mI (1059) ESP-BOX: Setting LCD backlight: 100%[0m
+[0;32mI (1059) stepAI: Backlight turned on successfully[0m
+[0;32mI (1159) stepAI: Creating UI...[0m
+[1;31mE (1309) lcd_panel: esp_lcd_panel_draw_bitmap(35): start position must be smaller than end position[0m
+[1;31mE (6159) task_wdt: Task watchdog got triggered. The following tasks/users did not reset the watchdog in time:[0m
+[1;31mE (6159) task_wdt:  - IDLE0 (CPU 0)[0m
+[1;31mE (6159) task_wdt: Tasks currently running:[0m
+[1;31mE (6159) task_wdt: CPU 0: main[0m
+[1;31mE (6159) task_wdt: CPU 1: IDLE1[0m
+[1;31mE (6159) task_wdt: Print CPU 0 (current core) backtrace[0m
+
+
+Backtrace: 0x4203BA22:0x3FC9C530 0x4203BE38:0x3FC9C550 0x4037B77D:0x3FC9C580 0x42012E48:0x3FCA2A90 0x42013103:0x3FCA2B00 0x42013210:0x3FCA2B30 0x420133B6:0x3FCA2B50 0x4201347E:0x3FCA2B80 0x4200962D:0x3FCA2BA0 0x420555AB:0x3FCA2BE0 0x4038211D:0x3FCA2C10
+

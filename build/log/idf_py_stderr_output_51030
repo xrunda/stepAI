@@ -1,0 +1,17 @@
+[0;33m--- esp-idf-monitor 1.5.0 on /dev/cu.usbmodem1101 115200[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H[0m
+[0;33m--- 0x42012e45: refr_area_part at /Users/liguang/Documents/xRunda/project/AI/github/stepAI/managed_components/lvgl__lvgl/src/core/lv_refr.c:710
+[0m
+[0;33m--- 0x4203ba22: task_wdt_timeout_handling at /Users/liguang/Documents/xRunda/project/AI/github/esp-idf/components/esp_system/task_wdt/task_wdt.c:434
+0x4203be38: task_wdt_isr at /Users/liguang/Documents/xRunda/project/AI/github/esp-idf/components/esp_system/task_wdt/task_wdt.c:507
+0x4037b77d: _xt_lowint1 at /Users/liguang/Documents/xRunda/project/AI/github/esp-idf/components/xtensa/xtensa_vectors.S:1240
+0x42012e48: refr_area_part at /Users/liguang/Documents/xRunda/project/AI/github/stepAI/managed_components/lvgl__lvgl/src/core/lv_refr.c:710
+0x42013103: refr_area at /Users/liguang/Documents/xRunda/project/AI/github/stepAI/managed_components/lvgl__lvgl/src/core/lv_refr.c:678
+0x42013210: refr_invalid_areas at /Users/liguang/Documents/xRunda/project/AI/github/stepAI/managed_components/lvgl__lvgl/src/core/lv_refr.c:616
+0x420133b6: _lv_disp_refr_timer at /Users/liguang/Documents/xRunda/project/AI/github/stepAI/managed_components/lvgl__lvgl/src/core/lv_refr.c:324
+0x4201347e: lv_refr_now at /Users/liguang/Documents/xRunda/project/AI/github/stepAI/managed_components/lvgl__lvgl/src/core/lv_refr.c:118 (discriminator 1)
+0x4200962d: app_main at /Users/liguang/Documents/xRunda/project/AI/github/stepAI/main/stepAI.c:258
+0x420555ab: main_task at /Users/liguang/Documents/xRunda/project/AI/github/esp-idf/components/freertos/app_startup.c:208
+0x4038211d: vPortTaskWrapper at /Users/liguang/Documents/xRunda/project/AI/github/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:139
+[0m
+[0m

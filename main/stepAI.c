@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: CC0-1.0
  */
 
-#include "bsp/esp-bsp.h"
+#include "bsp/esp-box-3.h"
 #include "esp_log.h"
 #include "esp_err.h"
 #include "freertos/FreeRTOS.h"
@@ -92,11 +92,12 @@ static void exchange_btn_event_cb(lv_event_t *e)
  */
 static void create_ui(void)
 {
-    // Create a container for the content
-    lv_obj_t *cont = lv_obj_create(lv_scr_act());
-    lv_obj_set_size(cont, 320, 240);
-    lv_obj_center(cont);
+    // Use screen directly as container (no nested container to avoid coordinate issues)
+    lv_obj_t *cont = lv_scr_act();
+    
+    // Set screen background color explicitly
     lv_obj_set_style_bg_color(cont, lv_color_hex(0x1A0B2E), LV_PART_MAIN);  // Deep purple background
+    lv_obj_set_style_bg_opa(cont, LV_OPA_COVER, LV_PART_MAIN);
     lv_obj_set_style_border_width(cont, 0, LV_PART_MAIN);
     lv_obj_set_style_pad_all(cont, 0, LV_PART_MAIN);
     lv_obj_clear_flag(cont, LV_OBJ_FLAG_SCROLLABLE);
@@ -236,21 +237,62 @@ void app_main(void)
         ESP_LOGI(TAG, "Backlight turned on successfully");
     }
 
-    /* Wait a bit more for backlight to stabilize */
-    vTaskDelay(pdMS_TO_TICKS(100));
+    /* Wait for LVGL task to fully start and backlight to stabilize */
+    vTaskDelay(pdMS_TO_TICKS(1000));
 
-    /* Create UI */
+    /* Get display handle */
+    lv_disp_t *default_disp = lv_disp_get_default();
+    if (default_disp == NULL) {
+        ESP_LOGE(TAG, "Failed to get default display!");
+        return;
+    }
+
+    /* Create UI with thread safety */
     ESP_LOGI(TAG, "Creating UI...");
-    create_ui();
+    bsp_display_lock(0);
     
-    // Calculate and update UI with initial values
+    // First, set entire screen to red to test if display refresh works at all
+    lv_obj_t *screen = lv_scr_act();
+    lv_obj_set_style_bg_color(screen, lv_color_hex(0xFF0000), LV_PART_MAIN);  // Red for testing
+    lv_obj_set_style_bg_opa(screen, LV_OPA_COVER, LV_PART_MAIN);
+    lv_obj_clear_flag(screen, LV_OBJ_FLAG_SCROLLABLE);
+    
+    // Invalidate entire screen
+    lv_obj_invalidate(screen);
+    
+    bsp_display_unlock();
+
+    /* Wait for LVGL task to process */
+    vTaskDelay(pdMS_TO_TICKS(1000));
+
+    /* Force LVGL to refresh the display immediately */
+    bsp_display_lock(0);
+    lv_refr_now(default_disp);
+    ESP_LOGI(TAG, "Forced LVGL display refresh - screen should be RED");
+    bsp_display_unlock();
+
+    /* Wait for LVGL task to process the refresh */
+    vTaskDelay(pdMS_TO_TICKS(2000));
+    
+    /* Now create the actual UI */
+    ESP_LOGI(TAG, "Creating actual UI...");
+    bsp_display_lock(0);
+    create_ui();
     calculate_exchangeable();
     update_ui();
-
-    /* LVGL will automatically refresh the display via its timer task */
-
-    /* Wait a bit more for display to update */
-    vTaskDelay(pdMS_TO_TICKS(200));
+    
+    // Invalidate entire screen again
+    lv_obj_invalidate(screen);
+    bsp_display_unlock();
+    
+    vTaskDelay(pdMS_TO_TICKS(1000));
+    
+    bsp_display_lock(0);
+    lv_refr_now(default_disp);
+    ESP_LOGI(TAG, "Forced LVGL display refresh - UI should be visible");
+    bsp_display_unlock();
+    
+    vTaskDelay(pdMS_TO_TICKS(1000));
 
     ESP_LOGI(TAG, "StepAI Example Initialized");
 }

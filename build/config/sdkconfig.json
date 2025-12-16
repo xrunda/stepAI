@@ -73,6 +73,8 @@
     "BSP_I2S_NUM": 1,
     "BSP_LCD_DRAW_BUF_DOUBLE": false,
     "BSP_LCD_DRAW_BUF_HEIGHT": 10,
+    "BSP_SD_FORMAT_ON_MOUNT_FAIL": false,
+    "BSP_SD_MOUNT_POINT": "/sdcard",
     "BSP_SPIFFS_FORMAT_ON_MOUNT_FAIL": false,
     "BSP_SPIFFS_MAX_FILES": 5,
     "BSP_SPIFFS_MOUNT_POINT": "/spiffs",

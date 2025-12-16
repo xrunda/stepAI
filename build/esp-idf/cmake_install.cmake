@@ -584,7 +584,17 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("/Users/liguang/Documents/xRunda/project/AI/github/stepAI/build/esp-idf/espressif__esp_lcd_ili9341/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("/Users/liguang/Documents/xRunda/project/AI/github/stepAI/build/esp-idf/espressif__esp_lcd_touch/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/Users/liguang/Documents/xRunda/project/AI/github/stepAI/build/esp-idf/espressif__esp_lcd_touch_gt911/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
@@ -594,7 +604,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/liguang/Documents/xRunda/project/AI/github/stepAI/build/esp-idf/espressif__esp-box/cmake_install.cmake")
+  include("/Users/liguang/Documents/xRunda/project/AI/github/stepAI/build/esp-idf/espressif__esp-box-3/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
